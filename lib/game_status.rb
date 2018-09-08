@@ -16,17 +16,35 @@ WIN_COMBINATIONS = [
 
 ]
 
+def won?(board)
+    returnBool = false
+    WIN_COMBINATIONS.each do |combo|
+      pos1 = board[combo[0]]
+      pos2 = board[combo[1]]
+      pos3 = board[combo[2]]
+      if pos1 == pos2 && pos2 == pos3 && pos3 == pos1
+        if pos1 == "X" || pos1 == "O"
+           puts "Combo = #{combo}TEST"
+          return combo
+        end
+      end
+    end
+    return false
+  end
 
 def full?(board)
   !board.include?(" ")
 end
- def draw?(board)
+
+def draw?(board)
   full?(board)
   !won?(board)
 end
- def over?(board)
+
+def over?(board)
   won?(board) || draw?(board) && full?(board)
 end
+
  def winner(board)
   if won?(board)
     return board[won?(board)[0]]
