@@ -15,3 +15,20 @@ WIN_COMBINATIONS = [
   [0, 4, 8]
 
 ]
+
+
+def full?(board)
+  !board.include?(" ")
+end
+ def draw?(board)
+  full?(board)
+  !won?(board)
+end
+ def over?(board)
+  won?(board) || draw?(board) && full?(board)
+end
+ def winner(board)
+  if won?(board)
+    return board[won?(board)[0]]
+  end
+end
